@@ -103,7 +103,6 @@ def get_investment_details_link(investment_row):
     try:
         investment_link = tds[0].find_element_by_css_selector("a")
         return investment_link
-        print(f"get investment link {investment_link.get_attribute('href')}")
     except NoSuchElementException:
         return None
 
@@ -128,7 +127,6 @@ def download_agency_investments_details_pdfs():
     for investment_row in investments_rows:
         investment_details_link = get_investment_details_link(investment_row)
         if investment_details_link is not None:
-            print("I have link")
             download_investment_details_pdf(investment_details_link)
 
 

@@ -67,7 +67,7 @@ def write_agency_investments_to_excel(writer):
     types = [td_list[4].text for investment_row in investments_rows]
     cio_ratings = [td_list[5].text for investment_row in investments_rows]
     num_of_projects = [td_list[6].text for investment_row in investments_rows]
-    
+
     investments_df = get_investments_df(uiis, bureaus, investment_titles, total_spendings, types, cio_ratings, num_of_projects)
 
     investments_df.to_excel(writer, sheet_name="Investments", index=False)
@@ -134,7 +134,7 @@ def download_agency_investments_details_pdfs():
 
 def main():
     try:
-        writer = pd.ExcelWriter('./stats.xlsx', engine='xlsxwriter')
+        writer = pd.ExcelWriter('./output/stats.xlsx', engine='xlsxwriter')
 
         open_website(SITE_URL)
 

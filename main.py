@@ -58,15 +58,15 @@ def write_agency_investments_to_excel(writer):
     show_all_investments_in_table()
 
     investments_rows = browser.get_webelements("css:div.dataTables_scrollBody table#investments-table-object tbody tr")
-    td_list = investment_row.find_elements_by_css_selector("td")
 
-    uiis = [td_list[0].text for investment_row in investments_rows]
-    bureaus = [td_list[1].text for investment_row in investments_rows]
-    investment_titles = [td_list[2].text for investment_row in investments_rows]
-    total_spendings = [td_list[3].text for investment_row in investments_rows]
-    types = [td_list[4].text for investment_row in investments_rows]
-    cio_ratings = [td_list[5].text for investment_row in investments_rows]
-    num_of_projects = [td_list[6].text for investment_row in investments_rows]
+    uiis = [investment_row.find_elements_by_css_selector("td")[0].text for investment_row in investments_rows]
+    bureaus = [investment_row.find_elements_by_css_selector("td")[1].text for investment_row in investments_rows]
+    investment_titles = [investment_row.find_elements_by_css_selector("td")[2].text for investment_row in investments_rows]
+    total_spendings = [investment_row.find_elements_by_css_selector("td")[3].text for investment_row in investments_rows]
+    types = [investment_row.find_elements_by_css_selector("td")[4].text for investment_row in investments_rows]
+    cio_ratings = [investment_row.find_elements_by_css_selector("td")[5].text for investment_row in investments_rows]
+    num_of_projects = [investment_row.find_elements_by_css_selector("td")[6].text for investment_row in investments_rows]
+
 
     investments_df = get_investments_df(uiis, bureaus, investment_titles, total_spendings, types, cio_ratings, num_of_projects)
 

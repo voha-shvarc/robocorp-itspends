@@ -126,7 +126,8 @@ def download_investment_details_pdf(investment_details_link):
 def download_agency_investments_details_pdfs():
     print("Start downloading")
     investments_rows = browser.get_webelements("css:div.dataTables_scrollBody table#investments-table-object tbody tr")
-    for investment_row in investments_rows:
+    investments_rowss = investments_rows[:5]
+    for investment_row in investments_rowss:
         investment_details_link = get_investment_details_link(investment_row)
         if investment_details_link is not None:
             download_investment_details_pdf(investment_details_link)

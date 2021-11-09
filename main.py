@@ -57,7 +57,6 @@ def go_to_agency_details_page(agencies_divs):
 
 def write_agency_investments_to_excel(writer):
     print("Start writing agency investments")
-    show_all_investments_in_table()
 
     investments_rows = browser.get_webelements("css:div.dataTables_scrollBody table#investments-table-object tbody tr")
 
@@ -156,6 +155,8 @@ def main():
         # write_agencies_to_excel(writer, agencies_overviews_divs)
 
         go_to_agency_details_page(agencies_overviews_divs)
+
+        show_all_investments_in_table()
 
         # write_agency_investments_to_excel(writer)
 

@@ -134,7 +134,7 @@ def download_agency_investments_details_pdfs():
 
 
 def compare_data():
-    output_dir_files = os.listdir(".output")
+    output_dir_files = os.listdir("./output")
     pdf_file_paths = [file_path for file_path in output_dir_files if ".pdf" in file_path]
     for pdf_file_path in pdf_file_paths:
         with open(f"./output/{pdf_file_path}", "rb") as pdf_file:

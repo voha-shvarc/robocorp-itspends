@@ -3,6 +3,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 import pandas as pd
 import time
+import os
 
 SITE_URL = "https://itdashboard.gov/"
 DEP_TO_VISIT = "Department of Agriculture"
@@ -148,6 +149,7 @@ def main():
         writer.save()
     finally:
         browser.close_all_browsers()
+        print(os.listdir("./output"))
 
 
 if __name__ == "__main__":

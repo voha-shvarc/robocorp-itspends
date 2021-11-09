@@ -152,11 +152,11 @@ def main():
 
         agencies_overviews_divs = get_agencies_overviews_divs()
 
-        write_agencies_to_excel(writer, agencies_overviews_divs)
+        # write_agencies_to_excel(writer, agencies_overviews_divs)
 
         go_to_agency_details_page(agencies_overviews_divs)
 
-        write_agency_investments_to_excel(writer)
+        # write_agency_investments_to_excel(writer)
 
         download_agency_investments_details_pdfs()
 

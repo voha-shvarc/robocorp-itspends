@@ -2,6 +2,7 @@ from RPA.Browser.Selenium import Selenium
 from selenium.common.exceptions import NoSuchElementException
 
 import pandas as pd
+import PyPDF2 as pdf
 import time
 import os
 
@@ -131,6 +132,18 @@ def download_agency_investments_details_pdfs():
             download_investment_details_pdf(investment_details_link)
 
 
+def compare_data():
+    output_dir_files = os.listdir(".output")
+    pdf_file_paths = [file_path for file_path in output_dir_files if ".pdf" in file_path]
+    for pdf_file_path in pdf_file_paths:
+        with open(f"./output/{pdf_file_path}", "rb") as pdf_file:
+            pdf_reader = pdf.PdfFileReader(pdf_file)
+            first_page = pdf_reader.getPage(0)
+            text = first_page.extractText()
+            print(f"text - {text[:20]}\n\n")
+
+
+
 def main():
     try:
         writer = pd.ExcelWriter('./output/stats.xlsx', engine='xlsxwriter')
@@ -146,6 +159,9 @@ def main():
         write_agency_investments_to_excel(writer)
 
         download_agency_investments_details_pdfs()
+
+        compare_data()
+        
         writer.save()
     finally:
         browser.close_all_browsers()
